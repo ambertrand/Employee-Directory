@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Container(prop) {
-    return <div className="container">{prop.children}</div>
+function Container(props) {
+    return <div className="container">{props.children}</div>
 }
 
 export default Container;
