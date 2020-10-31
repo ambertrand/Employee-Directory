@@ -7,18 +7,20 @@ class TableData extends React.Component {
         employees: []
     };
 
+    // get employee data
     componentDidMount() {
         API.getEmployees()
-        // .then(response => {
-        //     console.log(response);
+        .then(response => {
+            console.log(response);
         //     // this.setState({ employees: response.data.results });
-        // })
+        })
     }
 
+    // render table component with current state
     render() {
         return (
             <div>
-                <TableData />
+                <p>TableData component</p>
             </div>
         );
     }
