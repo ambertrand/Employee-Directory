@@ -2,16 +2,18 @@ import React from 'react';
 import Header from '../Header';
 import { API } from '../../utils/API';
 import EmployeeTable from '../TableContainer';
-// import { util } from "../utils/Utility";
+import { Grid } from '@material-ui/core';
+import SearchForm from '../Search';
+import { util } from "../../utils/Utility";
 // import Grid from '@material-ui/core/Grid';
 
 class Directory extends React.Component {
     state = {
-        employees: []
-        // renderedEmployees: [],
-        // search: "",
-        // orderBy: "",
-        // order: "asc"
+        employees: [],
+        renderedEmployees: [],
+        search: "",
+        orderBy: "",
+        order: "asc"
     }
 
     // get employee data
@@ -40,27 +42,27 @@ class Directory extends React.Component {
     }
 
     // Function to allow user to search the employee directory
-    // handleInputChange = event => {
-    //     let value = event.target.value;
-    //     const name = event.target.name;
-    //     // Set the state to that of input
-    //     this.setState({
-    //         [name]: value
-    //     }, () => {
-    //         if (this.state.search) {
-    //             let searchedEmps = util.searchEmployees(this.state.search, this.state.renderedEmployees);
-    //             this.setState({
-    //                 employees: searchedEmps,
-    //                 orderBy: ""
-    //             })
-    //         } else {
-    //             this.setState({
-    //                 employees: this.state.renderedEmployees,
-    //                 orderBy: ""
-    //             })
-    //         }
-    //     });
-    // };
+    handleInputChange = event => {
+        let value = event.target.value;
+        const name = event.target.name;
+        // Set the state to that of input
+        this.setState({
+            [name]: value
+        }, () => {
+            if (this.state.search) {
+                let searchedEmps = util.searchEmployees(this.state.search, this.state.renderedEmployees);
+                this.setState({
+                    employees: searchedEmps,
+                    orderBy: ""
+                })
+            } else {
+                this.setState({
+                    employees: this.state.renderedEmployees,
+                    orderBy: ""
+                })
+            }
+        });
+    };
 
     // Function to allow user to sort directory
     // handleSort = (col, order) => {
@@ -79,6 +81,9 @@ class Directory extends React.Component {
         return (
             <div>
                 <Header />
+                <Grid container justify="center">
+                    <SearchForm employees={this.state.employees} handleInputChange={this.handleInputChange} />
+                </Grid>
                 <EmployeeTable employees={this.state.employees} />
             </div>
         );
