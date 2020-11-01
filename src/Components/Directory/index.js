@@ -19,7 +19,6 @@ class Directory extends React.Component {
     componentDidMount() {
         API.getEmployees()
             .then((response) => {
-                console.log(response);
                 
                 let employeeData = response.data.results.map(emp => {
                     return {
@@ -31,7 +30,6 @@ class Directory extends React.Component {
                         email: emp.email,
                     }
                 })
-                console.log(employeeData);
                 this.setState({
                     employees: employeeData,
                     renderedEmployees: employeeData
