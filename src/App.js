@@ -1,10 +1,10 @@
-import Employees from './pages/Employees';
+import Directory from './Components/Directory';
 
 
 function App() {
   return (
     <div>
-      <Employees />
+      <Directory />
     </div>
   );
 }
