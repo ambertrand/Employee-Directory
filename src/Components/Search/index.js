@@ -1,9 +1,10 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import './style.css';
 
 function SearchForm(props) {
     return (
-        <TextField color="secondary" variant="outlined" label="Search Here" type="search" name="search" onChange={props.handleInputChange} />
+        <TextField className="searchBox" color="secondary" variant="outlined" label="Search Here" type="search" name="search" onChange={props.handleInputChange} />
     )
 }
 

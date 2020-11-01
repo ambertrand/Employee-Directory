@@ -2,10 +2,9 @@ import React from 'react';
 import Header from '../Header';
 import { API } from '../../utils/API';
 import EmployeeTable from '../TableContainer';
-import { Grid } from '@material-ui/core';
 import SearchForm from '../Search';
 import { util } from "../../utils/Utility";
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 
 class Directory extends React.Component {
     state = {
@@ -65,15 +64,15 @@ class Directory extends React.Component {
     };
 
     // Function to allow user to sort directory
-    // handleSort = (col, order) => {
-    //     let sortedList = [...this.state.employees].sort(util.compareValues(col, order));
-    //     let list = order === "asc" ? "desc" : "asc"
-    //     this.setState({
-    //         employees: sortedList,
-    //         order: list,
-    //         orderBy: col
-    //     });
-    // }
+    handleSort = (col, order) => {
+        let sortedList = [...this.state.employees].sort(util.compareValues(col, order));
+        let list = order === "asc" ? "desc" : "asc"
+        this.setState({
+            employees: sortedList,
+            order: list,
+            orderBy: col
+        });
+    }
 
 
     // Render table component with current state
@@ -84,7 +83,7 @@ class Directory extends React.Component {
                 <Grid container justify="center">
                     <SearchForm employees={this.state.employees} handleInputChange={this.handleInputChange} />
                 </Grid>
-                <EmployeeTable employees={this.state.employees} />
+                <EmployeeTable employees={this.state.employees} handleSort={this.handleSort} orderBy={this.state.orderBy} order={this.state.order} />
             </div>
         );
     }

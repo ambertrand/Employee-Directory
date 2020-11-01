@@ -5,21 +5,29 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Paper from '@material-ui/core/Paper';
+import './style.css';
 
 
 
 function EmployeeTable(props) {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer className="tableStyle" component={Paper}>
             <Table stickyHeader aria-label="Employee Table">
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">Image</TableCell>
-                        <TableCell align="center">First Name</TableCell>
-                        <TableCell align="center">Last Name</TableCell>
+                        <TableCell align="center">First Name
+                            <TableSortLabel active={props.orderBy === "firstName"} direction={props.order} onClick={() => props.handleSort("firstName", props.order)}></TableSortLabel>
+                        </TableCell>
+                        <TableCell align="center">Last Name
+                            <TableSortLabel active={props.orderBy === "lastName"} direction={props.order} onClick={() => props.handleSort("lastName", props.order)}></TableSortLabel>
+                        </TableCell>
                         <TableCell align="center">Phone Number</TableCell>
-                        <TableCell align="center">Email</TableCell>
+                        <TableCell align="center">Email
+                            <TableSortLabel active={props.orderBy === "email"} direction={props.order} onClick={() => props.handleSort("email", props.order)}></TableSortLabel>
+                        </TableCell>
                     </TableRow>
                 </TableHead>
 
