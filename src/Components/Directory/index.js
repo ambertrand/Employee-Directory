@@ -19,8 +19,6 @@ class Directory extends React.Component {
         API.getEmployees()
             .then((response) => {
                 console.log(response);
-                // this.state.response.map(emp => {
-
                 
                 let employeeData = response.data.results.map(emp => {
                     return {
